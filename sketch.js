@@ -406,8 +406,8 @@ function draw() {
 
   //textSize(15);
   //text(""+frameCount, 400, 290);
-  console.log(playBotton.scale);
-  console.log(optionsBotton.scale);
+  //console.log(playBotton.scale);
+  //console.log(optionsBotton.scale);
   drawSprites();
   //console.log(gameState);
 
