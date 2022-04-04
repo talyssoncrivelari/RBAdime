@@ -98,32 +98,40 @@ function setup(){
   lifeIcon3.addImage(lifeIconImg);
   lifeIcon3.scale = 0.025;
   lifeIcon3.visible = false;
-  title = createSprite(windowWidth - 75, windowHeight/2, 25, 15);
+  title = createSprite(windowWidth - 100, windowHeight/2, 25, 15);
   title.rotation = 90;
   title.scale = windowHeight/2048;
   title.addImage(titleImg);
-  playBotton = createSprite(windowWidth/2, windowHeight-200, 25, 15);
-  playBotton.scale = 0.115;
+  playBotton = createSprite(windowWidth - 720, windowHeight/2, 25, 15);
+  playBotton.rotation = 90;
+  playBotton.scale = windowHeight/11250;
   playBotton.addImage(playBottonImg);
-  optionsBotton = createSprite(windowWidth/2, windowHeight-100, 25, 15);
-  optionsBotton.scale = 0.18;
+  optionsBotton = createSprite(playBotton.x - 125, windowHeight/2, 25, 15);
+  optionsBotton.rotation = 90;
+  optionsBotton.scale = windowHeight/7200;
   optionsBotton.addImage(optionsBottonImg);
   overBotton = createSprite(windowWidth/2, windowHeight/2, 25, 15);
+  overBotton.rotation = 90;
   overBotton.scale = 0.8;
   overBotton.addImage(overBottonImg);
   automaticBotton = createSprite(windowWidth/2, windowHeight/2-75, 25, 15);
+  automaticBotton.rotation = 90;
   automaticBotton.scale = 1.59;
   automaticBotton.addImage(automaticBottonImg);
   manualBotton = createSprite(windowWidth/2, windowHeight/2+75, 25, 15);
+  manualBotton.rotation = 90;
   manualBotton.scale = 1.17;
   manualBotton.addImage(manualBottonImg);
   backBotton = createSprite(windowWidth/2-580, windowHeight/2+275, 25, 15);
+  backBotton.rotation = 90;
   backBotton.scale = 0.8;
   backBotton.addImage(backBottonImg);
   restartBotton = createSprite(windowWidth/2, windowHeight-150, 25, 15);
+  restartBotton.rotation = 90;
   restartBotton.scale = 0.195;
   restartBotton.addImage(restartBottonImg);
   quitBotton = createSprite(windowWidth/2+580, windowHeight/2+275, 25, 15);
+  quitBotton.rotation = 90;
   quitBotton.scale = 0.65;
   quitBotton.addImage(quitBottonImg);
   
@@ -398,6 +406,8 @@ function draw() {
 
   //textSize(15);
   //text(""+frameCount, 400, 290);
+  console.log(playBotton.scale);
+  console.log(optionsBotton.scale);
   drawSprites();
   //console.log(gameState);
 
