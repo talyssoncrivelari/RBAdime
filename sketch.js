@@ -169,7 +169,7 @@ function draw() {
     restartBotton.visible = false;
     quitBotton.visible = false;
 
-    if(mousePressedOver(playBotton)){ ////touches(playBotton) > 0 || 
+    if(mousePressedOver(playBotton) || touches.length > 0) {
       gameState = "loginStage1";
       RBAThemeSound.stop();
       TimeWorld = 0;
@@ -177,15 +177,15 @@ function draw() {
       title.visible = false;
       playBotton.visible = false;
       optionsBotton.visible = false;
-      //touches = [];
+      touches = [];
     }
-    if(mousePressedOver(optionsBotton)){ ////touche(optionsBotton) > 0 || 
+    if(mousePressedOver(optionsBotton) || touches.length > 0) {
       gameState = "options";
       title.visible = false;
       playBotton.visible = false;
       optionsBotton.visible = false;
       overBotton.visible = true;
-      //touches = [];
+      touches = [];
     }
   }
   if(gameState == "options"){
