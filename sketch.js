@@ -102,7 +102,7 @@ function setup(){
   title.rotation = 90;
   title.scale = windowHeight/2048;
   title.addImage(titleImg);
-  playBotton = createSprite(windowWidth - 720, windowHeight/2, 25, 15);
+  playBotton = createSprite(windowWidth - 750, windowHeight/2, 25, 15);
   playBotton.rotation = 90;
   playBotton.scale = windowHeight/11250;
   playBotton.addImage(playBottonImg);
@@ -152,15 +152,9 @@ function draw() {
   
   background(0);
   if(gameState == "serve"){
-    //if(frameCount == 1){
-    //  RBAThemeSound.play();
-    //}
-    fill("white");
-    textSize(20);
-    text("vBeta", windowWidth/2-27, windowHeight/2+325);
-    textSize(20);
-    fill("white");
-    text("v0.8",windowWidth/2+640, windowHeight/2+325);
+    if(frameCount <= 1){
+      RBAThemeSound.play();
+    }
     TimeWorld = 0;
     spawnSTARS1();
     spawnSTARS2();
@@ -195,12 +189,6 @@ function draw() {
     }
   }
   if(gameState == "options"){
-    fill("white");
-    textSize(20);
-    text("vBeta", windowWidth/2-27, windowHeight/2+325);
-    textSize(20);
-    fill("white");
-    text("v0.8",windowWidth/2+640, windowHeight/2+325);
     TimeWorld = 0;
     spawnSTARS1();
     spawnSTARS2();
@@ -215,12 +203,6 @@ function draw() {
     }
   }
   if(gameState == "over"){
-    fill("white");
-    textSize(20);
-    text("vBeta", windowWidth/2-27, windowHeight/2+325);
-    textSize(20);
-    fill("white");
-    text("v0.8", windowWidth/2+640, windowHeight/2+325);
     TimeWorld = 0;
     spawnSTARS1();
     spawnSTARS2();
@@ -414,11 +396,11 @@ function draw() {
 }
 
 function spawnSTARS1(){
-  if(frameCount % 8 === 0){
+  if(frameCount % 10 === 0){
     let star1 = createSprite(500, 150, 10, 10);
     star1.addImage(star1Img);
-    star1.velocityX = -(6 + TimeWorld * 2/100);
-    star1.lifetime = star1.velocityX/windowWidth;
+    star1.velocityY = -(6 + TimeWorld * 2/100);
+    star1.lifetime = star1.velocityY/windowHeight;
     star1.y = Math.round(random(windowHeight-1, windowHeight-663));
     star1.x = Math.round(random(windowWidth-1, windowWidth-1366));
     rocket.depth = star1.depth;
@@ -454,12 +436,12 @@ function spawnSTARS1(){
 }
 
 function spawnSTARS2(){
-  if(frameCount % 8 === 0){
+  if(frameCount % 10 === 0){
     let star2 = createSprite(500, 150, 10, 10);
     star2.addImage(star2Img);
     star2.scale = 5;
-    star2.velocityX = -(6 + TimeWorld * 2/100);
-    star2.lifetime = star2.velocityX/windowWidth;
+    star2.velocityY = -(6 + TimeWorld * 2/100);
+    star2.lifetime = star2.velocityY/windowHeight;
     star2.y = Math.round(random(windowHeight-1, windowHeight-663));
     star2.x = Math.round(random(windowWidth-1, windowWidth-1366));
     rocket.depth = star2.depth;
@@ -527,12 +509,13 @@ function spawnASTEROIDS(){
 function spawnCOINS(){
   if(frameCount % 50 === 0){
     let coins = createSprite(500, 150, 10, 10);
+    coins.rotation = 90;
     coins.addImage(coinsImg);
     coins.scale = 0.025;
-    coins.velocityX = Math.round(random(-(4 + TimeWorld * 2/100), -(7 + TimeWorld * 2/100)));
-    coins.lifetime = windowWidth/coins.velocityX;
-    coins.y = Math.round(random(windowHeight-1, windowHeight-663));
-    coins.x = windowWidth;
+    coins.velocityY = Math.round(random(-(4 + TimeWorld * 2/100), -(7 + TimeWorld * 2/100)));
+    coins.lifetime = coins.velocityY/windowHeight;
+    coins.y = windowHeight;
+    coins.x = Math.round(random(windowWidth));
     rocket.depth = coins.depth;
     rocket.depth += 1;
     coinsGroup.add(coins);
@@ -844,22 +827,6 @@ function laserAutomatic(){
   }
 }
 
-//function laserManual(){
-  //gunsXP();
-  //if(keyDown("SPACE") && gun == "lvl1"){
-  //  laser1x();
-  //}
-  //if(keyDown("SPACE") && gun == "lvl2"){
-  //  laser2x();
-  //}
-  //if(keyDown("SPACE") && gun == "lvl3"){
-  //  laser4x();
-  //}
-  //if(keyDown("SPACE") && gun == "lvl4"){
-  //  laser8x();
-  //}
-//}
-
 function lifesIcons(){
   if(lifes == 1){
     lifeIcon1.visible = true;
@@ -921,7 +888,6 @@ function quit(){
   frameCount = 0;
   gun = "lvl1";
 }
-//Jogo em atualização =D...
 
 function keyPressed() {
   if(cambio == "M" && gameState === "Stage1"){
